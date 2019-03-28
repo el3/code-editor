@@ -23,11 +23,11 @@ class MyTextInput(CodeInput):
             if modifiers[0] == "ctrl" and ord(text) in [270, 269, 43, 45, 61]:
                 self.readonly = True
 
-                if ord(text) in [270, 43]:
+                if ord(text) in [270, 61, 43]:
                     self.font_size += 1
                     self.cursor = (self.cursor[0] - 1, 0)
                     return
-                if ord(text) in [269, 61, 45]:
+                if ord(text) in [269, 45]:
                     self.font_size -= 1
                     self.cursor = (self.cursor[0] - 1, 0)
                     return
