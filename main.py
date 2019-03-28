@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.textinput import TextInput
+from kivy.uix.codeinput import CodeInput
+from kivy.extras.highlight import KivyLexer
 
 KV = """
 BoxLayout
@@ -12,16 +13,15 @@ BoxLayout
 
 """
 
-class MyTextInput(TextInput):
+class MyTextInput(CodeInput):
+    lexer=KivyLexer()
 
     def keyboard_on_key_down(self, window, keycode, text, modifiers):
         self.readonly = False
-        
         if len(modifiers) and text:
-            
+
             if modifiers[0] == "ctrl" and ord(text) in [270, 269, 43, 45, 61]:
                 self.readonly = True
-                text = ord(text)
 
                 if ord(text) in [270, 43]:
                     self.font_size += 1
@@ -40,4 +40,4 @@ class MyApp(App):
         self.root = Builder.load_string(KV)
 
 
-MyApp().run() 
+MyApp().run()
