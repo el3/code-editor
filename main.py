@@ -23,11 +23,11 @@ class MyTextInput(TextInput):
                 self.readonly = True
                 text = ord(text)
 
-                if text in [270, 43]:
+                if ord(text) in [270, 43]:
                     self.font_size += 1
                     self.cursor = (self.cursor[0] - 1, 0)
                     return
-                if text in [269, 61, 45]:
+                if ord(text) in [269, 61, 45]:
                     self.font_size -= 1
                     self.cursor = (self.cursor[0] - 1, 0)
                     return
