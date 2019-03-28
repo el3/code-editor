@@ -19,15 +19,15 @@ class MyTextInput(TextInput):
         
         if len(modifiers) and text:
             
-            if modifiers[0] == "ctrl" and ord(text) in [270, 269, 45, 61]:
+            if modifiers[0] == "ctrl" and ord(text) in [270, 269, 43, 45, 61]:
                 self.readonly = True
                 text = ord(text)
 
-                if text in [270, 45]:
+                if text in [270, 43]:
                     self.font_size += 1
                     self.cursor = (self.cursor[0] - 1, 0)
                     return
-                if text in [269, 61]:
+                if text in [269, 61, 45]:
                     self.font_size -= 1
                     self.cursor = (self.cursor[0] - 1, 0)
                     return
