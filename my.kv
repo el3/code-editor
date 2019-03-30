@@ -1,0 +1,41 @@
+#: import os os
+
+BoxLayout:
+	preview_area: preview_area
+	code_editor: code_editor
+	filepath: filepath
+	BoxLayout:
+		orientation: 'vertical'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: dp(38)
+			Button:
+				size_hint_x: .075
+				text: "File"
+			TextInput:
+				id: filepath
+				multiline: False
+				size_hint_x: .725
+			Button:
+				text: 'Load'
+				size_hint_x: .1
+				on_release: app.load_file()
+			Button:
+				text: 'Save'
+				size_hint_x: .1
+				on_release: app.save_file()
+			Button:
+				text: 'Preview'
+				size_hint_x: .1
+				on_release: app.preview()
+		BoxLayout:
+			Splitter:
+				min_size: self.parent.width * 0.05
+				max_size: self.parent.width * 0.95
+				sizable_from: 'right'
+				CodeEditor:
+					id: code_editor
+					focus: True
+			RelativeLayout:
+				id: preview_area
